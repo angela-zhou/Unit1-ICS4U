@@ -1,0 +1,5 @@
+language: java
+
+jdk: oraclejdk8
+
+script: ant test -f ./ICS4UC_Unit1/build.xml
