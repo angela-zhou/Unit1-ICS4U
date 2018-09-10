@@ -15,12 +15,14 @@ public class HelloWorld extends Application {
 
 	public void start (Stage myStage) throws Exception{
 		
+		Group root = new Group();
+		
 		Text text = new Text(10, 50, "Hello World!");
 		
 		// can insert title of a type of font before font size
 		text.setFont(Font.font(50));
 
-		Group root = new Group(text);
+		root.getChildren().add(text);
 
 		Scene scene = new Scene(root);
 
