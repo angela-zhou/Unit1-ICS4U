@@ -28,7 +28,7 @@ public class HelloWorld extends Application {
 
 		myStage.setScene(scene);
 		
-		myStage.setTitle("Welcome to JavaFX!");
+		myStage.setTitle("Coding is great!");
 		
 		myStage.show();
 
