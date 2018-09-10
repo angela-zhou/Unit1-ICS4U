@@ -17,7 +17,7 @@ public class HelloWorld extends Application {
 		
 		Group root = new Group();
 		
-		Text text = new Text(10, 50, "Hello World!");
+		Text text = new Text(10, 50, "I love coding!");
 		
 		// can insert title of a type of font before font size
 		text.setFont(Font.font(50));
