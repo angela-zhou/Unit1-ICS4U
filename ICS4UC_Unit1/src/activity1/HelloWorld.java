@@ -16,8 +16,8 @@ public class HelloWorld extends Application {
 	public void start (Stage myStage) throws Exception{
 		
 		Group root = new Group();
-		
-		Text text = new Text(10, 50, "Java is awesome!");
+
+		Text text = new Text(10, 50, "Java is awesome & Github rocks");
 		
 		// can insert title of a type of font before font size
 		text.setFont(Font.font(50));
