@@ -28,7 +28,7 @@ public class HelloWorld extends Application {
 
 		myStage.setScene(scene);
 		
-		myStage.setTitle("I love coding!");
+		myStage.setTitle("Coding is amazing!");
 		
 		myStage.show();
 
