@@ -20,7 +20,7 @@ public class HelloWorld extends Application {
 		Text text = new Text(10, 50, "Java is awesome & Github rocks");
 		
 		// can insert title of a type of font before font size
-		text.setFont(Font.font(50));
+		text.setFont(Font.font(30));
 
 		root.getChildren().add(text);
 
