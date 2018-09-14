@@ -52,24 +52,27 @@ public class ExamGradeCalculator extends Application{
 		Label lblExamValue = new Label ("Your exam is worth (%):");
 		lblExamValue.setFont(Font.font(SMALL_FONT));
 		txtExamValue = new TextField();
-		HBox hbxExamValue = new HBox(GAP, lblExamValue, txtExamValue);
-		root.getChildren().add(hbxExamValue);
+		VBox vbxExamValue = new VBox(GAP, lblExamValue, txtExamValue);
+		hbxInput.getChildren().add(vbxExamValue);
 		
 		// Asking for desired grade
 		Label lblDesiredGrade = new Label ("You want (at least):");
 		lblDesiredGrade.setFont(Font.font(SMALL_FONT));
 		txtDesiredGrade = new TextField();
-		HBox hbxDesiredGrade = new HBox(GAP, lblDesiredGrade, txtDesiredGrade);
-		root.getChildren().add(hbxDesiredGrade);
+		VBox vbxDesiredGrade = new VBox(GAP, lblDesiredGrade, txtDesiredGrade);
+		hbxInput.getChildren().add(vbxDesiredGrade);
+		
+		HBox hbxOutput = new HBox(GAP);
+		root.getChildren().add(hbxOutput);
 		
 		// Calculate button
 		Button btnCalculate = new Button("Calculate!");
-		root.getChildren().add(btnCalculate);
+		hbxOutput.getChildren().add(btnCalculate);
 		
 		// Instantation of the label to hold the result
 		lblResult = new Label();
 		lblResult.setFont(Font.font(MEDIUM_FONT));
-		root.getChildren().add(lblResult);
+		hbxOutput.getChildren().add(lblResult);
 		
 		// Once button is clicked, grade will be calculated
 		btnCalculate.setOnAction(event -> calculateGrade());
