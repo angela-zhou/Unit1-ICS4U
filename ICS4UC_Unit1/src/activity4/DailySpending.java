@@ -30,6 +30,9 @@ public class DailySpending extends Application{
 		VBox root = new VBox(GAP);
 		root.setPadding(new Insets(GAP, GAP, GAP, GAP));
 
+		/**
+		 * TITLE
+		 */
 		// Title
 		Label lblTitle = new Label("Daily Spending Calculator");
 		lblTitle.setFont(Font.font(LARGE_FONT));
@@ -39,24 +42,38 @@ public class DailySpending extends Application{
 		Label lblInstructions = new Label("What do you spend money on every day?");
 		lblInstructions.setFont(Font.font(MEDIUM_FONT));
 		root.getChildren().add(lblInstructions);
+		
+		/**
+		 * INPUT
+		 */
+		// instantiate input layout
+		HBox hbxInput = new HBox(GAP);
+		root.getChildren().add(hbxInput);
 
 		// Asking for daily cost of item
 		Label lblDailyCost = new Label ("Daily cost of item:");
 		lblDailyCost.setFont(Font.font(SMALL_FONT));
 		txtDailyCost = new TextField();
-		HBox hbxTermMark = new HBox(GAP, lblDailyCost, txtDailyCost);
-		root.getChildren().add(hbxTermMark);
+		VBox vbxDailyCost = new VBox(GAP, lblDailyCost, txtDailyCost);
+		hbxInput.getChildren().add(vbxDailyCost);
 
 		// Asking for number of days
 		Label lblNumDays = new Label ("Enter a number of days:");
 		lblNumDays.setFont(Font.font(SMALL_FONT));
 		txtNumDays = new TextField();
-		HBox hbxExamValue = new HBox(GAP, lblNumDays, txtNumDays);
-		root.getChildren().add(hbxExamValue);
+		VBox hbxNumDays = new VBox(GAP, lblNumDays, txtNumDays);
+		hbxInput.getChildren().add(hbxNumDays);
+		
+		/**
+		 * OUTPUT
+		 */
+		// instantiate output layout
+		HBox hbxOutput = new HBox(GAP);
+		root.getChildren().add(hbxOutput);
 
 		// Calculate button
 		Button btnCalculate = new Button("Calculate");
-		root.getChildren().add(btnCalculate);
+		hbxOutput.getChildren().add(btnCalculate);
 
 		// instantiate label to hold the result
 		lblResult = new Label();
@@ -75,13 +92,13 @@ public class DailySpending extends Application{
 
 	private void calculateSpending() {
 		// Local variables
-		int dailyCost, numDays;
+		double dailyCost, numDays;
 		double result;
 
 		// Input
 		try { // ensuring all text boxes are filled
-			dailyCost = Integer.parseInt(txtDailyCost.getText());
-			numDays   = Integer.parseInt(txtNumDays.getText());
+			dailyCost = Double.parseDouble(txtDailyCost.getText());
+			numDays   = Double.parseDouble(txtNumDays.getText());
 		} catch (NumberFormatException e) {
 			lblResult.setText("Please enter a number into the text boxes.");
 			return;
