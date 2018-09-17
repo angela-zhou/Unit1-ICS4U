@@ -6,10 +6,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.TilePane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import simpleIO.Console;
@@ -27,7 +25,7 @@ public class ExamGradeCalculator extends Application{
 	@Override
 	public void start(Stage myStage) throws Exception {
 		
-		// instantiate layout
+		// instantiate root layout
 		VBox root = new VBox(GAP);
 		root.setPadding(new Insets(GAP, GAP, GAP, GAP));
 		
@@ -38,6 +36,7 @@ public class ExamGradeCalculator extends Application{
 		lblInstructions.setFont(Font.font(MEDIUM_FONT));
 		root.getChildren().add(lblInstructions);
 		
+		// instantiate input layout
 		HBox hbxInput = new HBox(GAP);
 		root.getChildren().add(hbxInput);
 		
@@ -62,6 +61,7 @@ public class ExamGradeCalculator extends Application{
 		VBox vbxDesiredGrade = new VBox(GAP, lblDesiredGrade, txtDesiredGrade);
 		hbxInput.getChildren().add(vbxDesiredGrade);
 		
+		// instantiate output layout
 		HBox hbxOutput = new HBox(GAP);
 		root.getChildren().add(hbxOutput);
 		
