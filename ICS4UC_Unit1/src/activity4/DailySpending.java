@@ -3,11 +3,13 @@ package activity4;
 import javafx.scene.control.Button;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import simpleIO.Console;
@@ -27,21 +29,7 @@ public class DailySpending extends Application{
 	public void start(Stage myStage) throws Exception {
 
 		// instantiate root layout
-		VBox root = new VBox(GAP);
-		root.setPadding(new Insets(GAP, GAP, GAP, GAP));
-
-		/**
-		 * TITLE
-		 */
-		// Title
-		Label lblTitle = new Label("Daily Spending Calculator");
-		lblTitle.setFont(Font.font(LARGE_FONT));
-		root.getChildren().add(lblTitle);
-
-		// Instructions for the user
-		Label lblInstructions = new Label("What do you spend money on every day?");
-		lblInstructions.setFont(Font.font(MEDIUM_FONT));
-		root.getChildren().add(lblInstructions);
+		StackPane root = new StackPane();
 		
 		/**
 		 * INPUT
@@ -49,6 +37,8 @@ public class DailySpending extends Application{
 		// instantiate input layout
 		HBox hbxInput = new HBox(GAP);
 		root.getChildren().add(hbxInput);
+		StackPane.setMargin(hbxInput, new Insets(100, 100, 100, 100));
+		StackPane.setAlignment(hbxInput, Pos.BASELINE_CENTER);
 
 		// Asking for daily cost of item
 		Label lblDailyCost = new Label ("Daily cost of item:");
@@ -63,6 +53,24 @@ public class DailySpending extends Application{
 		txtNumDays = new TextField();
 		VBox hbxNumDays = new VBox(GAP, lblNumDays, txtNumDays);
 		hbxInput.getChildren().add(hbxNumDays);
+
+		/**
+		 * TITLE
+		 */
+		VBox vbxTitle = new VBox(GAP);
+		root.getChildren().add(vbxTitle);
+		StackPane.setMargin(vbxTitle, new Insets(10, 10, 10, 10));
+		StackPane.setAlignment(hbxInput, Pos.TOP_CENTER);
+		
+		// Title
+		Label lblTitle = new Label("Daily Spending Calculator");
+		lblTitle.setFont(Font.font(LARGE_FONT));
+		vbxTitle.getChildren().add(lblTitle);
+
+		// Instructions for the user
+		Label lblInstructions = new Label("What do you spend money on every day?");
+		lblInstructions.setFont(Font.font(MEDIUM_FONT));
+		vbxTitle.getChildren().add(lblInstructions);
 		
 		/**
 		 * OUTPUT
@@ -70,6 +78,8 @@ public class DailySpending extends Application{
 		// instantiate output layout
 		HBox hbxOutput = new HBox(GAP);
 		root.getChildren().add(hbxOutput);
+		StackPane.setMargin(vbxTitle, new Insets(10, 10, 10, 10));
+		StackPane.setAlignment(hbxInput, Pos.BOTTOM_CENTER);
 
 		// Calculate button
 		Button btnCalculate = new Button("Calculate");
@@ -108,7 +118,7 @@ public class DailySpending extends Application{
 		result = dailyCost * numDays;
 
 		// Output
-		lblResult.setText("Over " + txtNumDays.getText() + " days, your daily spending habit will cost you $" + Console.roundDouble(result, 2));
+		lblResult.setText("Your daily spending will cost you $" + Console.roundDouble(result, 2));
 
 	}
 
