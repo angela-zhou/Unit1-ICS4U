@@ -60,7 +60,7 @@ public class DailySpending extends Application{
 		VBox vbxTitle = new VBox(GAP);
 		root.getChildren().add(vbxTitle);
 		StackPane.setMargin(vbxTitle, new Insets(10, 10, 10, 10));
-		StackPane.setAlignment(hbxInput, Pos.TOP_CENTER);
+		StackPane.setAlignment(vbxTitle, Pos.TOP_CENTER);
 		
 		// Title
 		Label lblTitle = new Label("Daily Spending Calculator");
@@ -78,8 +78,8 @@ public class DailySpending extends Application{
 		// instantiate output layout
 		HBox hbxOutput = new HBox(GAP);
 		root.getChildren().add(hbxOutput);
-		StackPane.setMargin(vbxTitle, new Insets(10, 10, 10, 10));
-		StackPane.setAlignment(hbxInput, Pos.BOTTOM_CENTER);
+		StackPane.setMargin(hbxOutput, new Insets(10, 10, 10, 10));
+		StackPane.setAlignment(hbxOutput, Pos.BOTTOM_LEFT);
 
 		// Calculate button
 		Button btnCalculate = new Button("Calculate");
@@ -88,7 +88,7 @@ public class DailySpending extends Application{
 		// instantiate label to hold the result
 		lblResult = new Label();
 		lblResult.setFont(Font.font(MEDIUM_FONT));
-		root.getChildren().add(lblResult);
+		hbxOutput.getChildren().add(lblResult);
 
 		// Once button is clicked, grade will be calculated
 		btnCalculate.setOnAction(event -> calculateSpending());
