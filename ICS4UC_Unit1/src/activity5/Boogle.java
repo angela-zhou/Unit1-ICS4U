@@ -19,14 +19,26 @@ public class Boogle {
 		this.name = name;
 	}
 	
-	public String feed(String foodType, int energy) {
+	public String feed(String food, int energy) {
 		happy += energy;
-		return "Yum, that was a delicious " + foodType + "!"
+		return "Yum, that was a delicious " + food + "!"
 				+ "\nHappiness Level: " + happy; 
 	}
 	
 	public String play(String game) {
-		return game + " is my favourite game!";
+		return "I love playing " + game;
+	}
+	
+	public String walk(String place) {
+		return "I want to go for a walk in " + place;
+	}
+	
+	public String groom(String groom) {
+		return groom + " are the best!";
+	}
+	
+	public String sleep(String bed) {
+		return "The " + bed + " is very comfortable!";
 	}
 	
 }
