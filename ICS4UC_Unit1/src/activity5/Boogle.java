@@ -2,9 +2,10 @@ package activity5;
 
 public class Boogle {
 	private String name; 
-	private int happy  = 50;
-	private int sad    = 0;
-	private int hungry = 10;
+	private int happiness  = 50;
+	private int tiredness  = 0;
+	private int hunger     = 0;
+	private int energy     = 0;
 	
 	public Boogle() {
 		setName("Arnold");
@@ -19,10 +20,9 @@ public class Boogle {
 		this.name = name;
 	}
 	
-	public String feed(String food, int energy) {
-		happy += energy;
-		return "Yum, that was a delicious " + food + "!"
-				+ "\nHappiness Level: " + happy; 
+	public String feed(String food, int happiness, int energy) {
+		
+		return "Yum, that was a delicious " + food + "!";
 	}
 	
 	public String play(String game) {
