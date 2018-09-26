@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -25,7 +26,7 @@ public class VirtualPet extends Application {
 	public final String sleep = "Insert a place to sleep (eg. couch)";
 	public final String play  = "Insert a game to play (eg. soccer)";
 	public final String walk  = "Insert a place to walk (eg. the park)";
-	public final String groom = "Insert a method of grooming (eg. bubble baths)";
+	public final String groom = "Insert a method of grooming (eg. baths)";
 
 	// Global variables
 	Boogle myPet;
@@ -61,7 +62,7 @@ public class VirtualPet extends Application {
 		 */
 		// input layout
 		VBox vbxInput = new VBox(GAP);
-		root.add(vbxInput, 0, 6, 6, 1); // pos (0,6) colspan = 6
+		root.add(vbxInput, 0, 6, 10, 1); // pos (0,6) colspan = 6
 
 		// feed button
 		Button btnFeed = new Button("Feed");
@@ -70,6 +71,7 @@ public class VirtualPet extends Application {
 		TextField txtFeed = new TextField();
 		txtFeed.setPromptText(feed);
 		HBox hbxFeed = new HBox(GAP, txtFeed, btnFeed);
+        HBox.setHgrow(txtFeed, Priority.ALWAYS);
 		vbxInput.getChildren().add(hbxFeed);
 
 		btnFeed.setOnAction(event -> feedBoogle(txtFeed.getText()));
@@ -79,8 +81,9 @@ public class VirtualPet extends Application {
 		btnPlay.setFont(Font.font(SMALL_FONT));
 
 		TextField txtPlay = new TextField();
-		txtPlay.setPromptText(feed);
+		txtPlay.setPromptText(play);
 		HBox hbxPlay = new HBox(GAP, txtPlay, btnPlay);
+		HBox.setHgrow(txtPlay, Priority.ALWAYS);
 		vbxInput.getChildren().add(hbxPlay);
 
 		btnPlay.setOnAction(event -> playBoogle(txtPlay.getText()));
@@ -92,6 +95,7 @@ public class VirtualPet extends Application {
 		TextField txtSleep = new TextField();
 		txtSleep.setPromptText(sleep);
 		HBox hbxSleep = new HBox(GAP, txtSleep, btnSleep);
+		HBox.setHgrow(txtSleep, Priority.ALWAYS);
 		vbxInput.getChildren().add(hbxSleep);
 
 		btnSleep.setOnAction(event -> sleepBoogle(txtSleep.getText()));
@@ -104,6 +108,7 @@ public class VirtualPet extends Application {
 		TextField txtWalk = new TextField();
 		txtWalk.setPromptText(walk);
 		HBox hbxWalk = new HBox(GAP, txtWalk, btnWalk);
+		HBox.setHgrow(txtWalk, Priority.ALWAYS);
 		vbxInput.getChildren().add(hbxWalk);
 
 		btnWalk.setOnAction(event -> walkBoogle(txtWalk.getText()));
@@ -115,6 +120,7 @@ public class VirtualPet extends Application {
 		TextField txtGroom = new TextField();
 		txtGroom.setPromptText(groom);
 		HBox hbxGroom = new HBox(GAP, txtGroom, btnGroom);
+		HBox.setHgrow(txtGroom, Priority.ALWAYS);
 		vbxInput.getChildren().add(hbxGroom);
 
 		btnGroom.setOnAction(event -> groomBoogle(txtGroom.getText()));
