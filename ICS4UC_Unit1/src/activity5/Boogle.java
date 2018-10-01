@@ -5,8 +5,6 @@ public class Boogle {
 	private String prompt;
 	private int happiness  = 0;
 	private int tiredness  = 10;
-	private int hunger     = 10;
-	private int energy     = 0;
 	
 	public Boogle() {
 		setName("Arnold");
