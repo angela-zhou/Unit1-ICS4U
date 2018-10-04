@@ -5,6 +5,9 @@ public class Student extends Person {
 	private String major;
 	private int graduationYear;
 	
+	/**
+	 * Constructors
+	 */
 	public Student(){
 		
 	}

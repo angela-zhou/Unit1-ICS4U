@@ -17,9 +17,6 @@ public class VirtualBuddy extends Application {
 	static final int LARGE_FONT  = 40;
 	static final int MEDIUM_FONT = 25;
 	static final int SMALL_FONT  = 12;
-	
-	//Output UI Control
-	ListView<String> lstResponse;
 
 	@Override
 	public void start(Stage myStage) throws Exception {
@@ -29,6 +26,10 @@ public class VirtualBuddy extends Application {
         root.setHgap(GAP);
         root.setVgap(GAP);
         root.setPadding(new Insets(GAP, GAP, GAP, GAP));
+        
+      //Output UI Control
+    	ListView<String> lstResponse;
+
         
         /**
          * Titles
