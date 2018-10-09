@@ -1,6 +1,6 @@
 package activity6;
 
-public abstract class Person {
+public class Person {
 	private String name;
 	private long SIN;
 	private int age;
