@@ -7,10 +7,14 @@ package assignment;
  * Teacher: Mrs. Spindler
  * HLPLayer.java
  */
-public class HLPlayer extends Die {
+public class HLPlayer {
 	private int points = 1000;
 	private int riskPoints;
-	private String call;
+	private int call;
+	private int rollSum;
+	
+	Die die1 = new Die();
+	Die die2 = new Die();
 	
 	public HLPlayer() {
 		
@@ -22,6 +26,9 @@ public class HLPlayer extends Die {
 	
 	// Show Points
 	public String showPoints() {
+		if (call == 1 && rollSum >= Die.lowNum && rollSum <= Die.highNum) {
+			points += riskPoints;
+		}
 		String point = Integer.toString(points);
 		return point;
 	}
@@ -31,16 +38,33 @@ public class HLPlayer extends Die {
 		this.riskPoints = riskPoints;
 	}
 	
+	public int getRiskPoints() {
+		return riskPoints;
+	}
+	
 	// Make call
-	public void makeCall(String call) {
+	public void makeCall(int call) {
 		this.call = call;
 	}
 	
+	public int getCall() {
+		return call;
+	}
+	
 	// Roll Dice
+	public void rollDice() {
+		int roll1 = die1.roll();
+		int roll2 = die2.roll();
+		
+		rollSum = roll1 + roll2;
+	}
 	
 	// Show roll
-	
-	// Show points
+	public String showRoll() {
+		String rollString = Integer.toString(rollSum);
+		return rollString;
+
+	}
 	
 	
 	

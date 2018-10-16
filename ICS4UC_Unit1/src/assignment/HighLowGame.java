@@ -1,22 +1,10 @@
 package assignment;
 
-/**
- * @author Angela Zhou
- * Date: Oct 15th, 2018
- * Course: ICS4U
- * Teacher: Mrs. Spindler
- * HighLowGame.java
- */
 import simpleIO.Console;
 
 public class HighLowGame {
 
 	public static void main(String[] args) {
-		
-//		int highNum = findMax(a, b);
-//	    int lowNum = findMin(a, b);
-//	    int range = highNum - lowNum + 1;
-//	    return (int) (Math.random() * range) + lowNum;
 
 		final int QUIT = -1;
 		final int LOW = 0, HIGH = 1;
