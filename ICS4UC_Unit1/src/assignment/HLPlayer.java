@@ -8,17 +8,25 @@ package assignment;
  * HLPLayer.java
  */
 public class HLPlayer {
+	final   int QUIT   = -1;
+	final   int LOW    = 0;
+	final   int HIGH   = 1;
 	private int points = 1000;
 	private int riskPoints;
 	private int call;
 	private int rollSum;
-	
-	Die die1 = new Die();
-	Die die2 = new Die();
+	private int numOfDieSides;
 	
 	public HLPlayer() {
 		
 	}
+	
+	public HLPlayer(int numOfDieSides) {
+		setNumOfDieSides(numOfDieSides);
+	}
+	
+	Die die1 = new Die();
+	Die die2 = new Die();
 	
 	/**
 	 * Gameplay Methods
@@ -26,8 +34,14 @@ public class HLPlayer {
 	
 	// Show Points
 	public String showPoints() {
-		if (call == 1 && rollSum >= Die.lowNum && rollSum <= Die.highNum) {
-			points += riskPoints;
+		// if call is low 
+		if (call == LOW && rollSum >= Die.lowNum * 2 && rollSum <= Die.highNum) {
+			points += riskPoints * 2;
+		// if call is high
+		} else if (call == HIGH && rollSum >= Die.highNum + 2 && rollSum <= Die.highNum * 2) {
+			points += riskPoints * 2;
+		} else {
+			points -= riskPoints;
 		}
 		String point = Integer.toString(points);
 		return point;
@@ -35,6 +49,9 @@ public class HLPlayer {
 	
 	// Risk Points
 	public void riskPoints(int riskPoints) {
+		if (riskPoints < 0) {
+			riskPoints *= -1;
+		}
 		this.riskPoints = riskPoints;
 	}
 	
@@ -64,6 +81,15 @@ public class HLPlayer {
 		String rollString = Integer.toString(rollSum);
 		return rollString;
 
+	}
+	
+	// Number of Die Sides
+	public int getNumOfDieSides() {
+		return numOfDieSides;
+	}
+
+	public void setNumOfDieSides(int numOfDieSides) {
+		this.numOfDieSides = numOfDieSides;
 	}
 	
 	
