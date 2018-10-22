@@ -2,7 +2,7 @@ package assignment;
 
 /**
  * @author Angela Zhou
- * Date: Oct 15th, 2018
+ * Start Date: Oct 15th, 2018
  * Course: ICS4U
  * Teacher: Mrs. Spindler
  * HLPLayer.java
@@ -15,18 +15,19 @@ public class HLPlayer {
 	private int riskPoints;
 	private int call;
 	private int rollSum;
-	private int numOfDieSides;
+	private int numOfSides;
+	Die die1, die2;
 	
 	public HLPlayer() {
 		
 	}
 	
 	public HLPlayer(int numOfDieSides) {
-		setNumOfDieSides(numOfDieSides);
-	}
+		setNumOfSides(numOfDieSides);
 	
-	Die die1 = new Die();
-	Die die2 = new Die();
+		die1 = new Die(numOfSides);
+		die2 = new Die(numOfSides);
+	}
 	
 	/**
 	 * Gameplay Methods
@@ -34,21 +35,24 @@ public class HLPlayer {
 	
 	// Show Points
 	public String showPoints() {
-		// if call is low 
-		if (call == LOW && rollSum >= Die.lowNum * 2 && rollSum <= Die.highNum) {
+		// if call is low and user called correctly
+		if (call == LOW && rollSum >= Die.lowNum * 2 && rollSum <= numOfSides) {
 			points += riskPoints * 2;
-		// if call is high
-		} else if (call == HIGH && rollSum >= Die.highNum + 2 && rollSum <= Die.highNum * 2) {
+		// if call is high and user called correctly
+		} else if (call == HIGH && rollSum >= numOfSides + 2 && rollSum <= numOfSides * 2) {
 			points += riskPoints * 2;
+		// otherwise user loses risk points
 		} else {
 			points -= riskPoints;
 		}
+		// convert back to string to show the user
 		String point = Integer.toString(points);
 		return point;
 	}
 	
 	// Risk Points
 	public void riskPoints(int riskPoints) {
+		// risk points are ALWAYS positive
 		if (riskPoints < 0) {
 			riskPoints *= -1;
 		}
@@ -78,18 +82,19 @@ public class HLPlayer {
 	
 	// Show roll
 	public String showRoll() {
+		// convert to string to show the user
 		String rollString = Integer.toString(rollSum);
 		return rollString;
 
 	}
 	
 	// Number of Die Sides
-	public int getNumOfDieSides() {
-		return numOfDieSides;
+	public int getNumOfSides() {
+		return numOfSides;
 	}
 
-	public void setNumOfDieSides(int numOfDieSides) {
-		this.numOfDieSides = numOfDieSides;
+	public void setNumOfSides(int numOfSides) {
+		this.numOfSides = numOfSides;
 	}
 	
 	

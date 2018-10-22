@@ -1,5 +1,12 @@
 package assignment;
 
+/**
+ * @author Angela Zhou
+ * Start Date: Oct 15th, 2018
+ * Course: ICS4U
+ * Teacher: Mrs. Spindler
+ * HLPLayer.java
+ */
 import simpleIO.Console;
 
 public class HighLowGame {
@@ -18,8 +25,11 @@ public class HighLowGame {
 
 		final int QUIT = -1;
 		final int LOW = 0, HIGH = 1;
-		HLPlayer player = new HLPlayer();
-		int pointsToRisk, call;
+		HLPlayer player;
+		int pointsToRisk, numOfDieSides, call;
+		
+		numOfDieSides = Console.readInt("How many sides would you like your dice to have?");
+		player = new HLPlayer(numOfDieSides);
 
 		/* play High or Low game */
 		Console.print("You have " + player.showPoints() + " points.");
