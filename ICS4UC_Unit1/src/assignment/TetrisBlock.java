@@ -32,6 +32,24 @@ public abstract class TetrisBlock extends Parent {
 	public final int size = 25;
 	
 	public TetrisBlock() {
+		setOrientation(0);
 		
+	}
+	
+	public int getOrientation() {
+		return orientation;
+	}
+
+	public void setOrientation(int orientation) {
+		this.orientation = orientation;
+	}
+	
+	public String getColour() {
+		return colour;
+	}
+	
+	public void setColour(String colour) {
+		
+		this.colour = colour;
 	}
 }
