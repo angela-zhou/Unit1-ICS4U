@@ -24,7 +24,7 @@ public class HLPlayer {
 	
 	public HLPlayer(int numOfDieSides) {
 		setNumOfSides(numOfDieSides);
-	
+		
 		die1 = new Die(numOfSides);
 		die2 = new Die(numOfSides);
 	}
