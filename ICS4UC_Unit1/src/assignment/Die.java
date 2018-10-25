@@ -8,7 +8,7 @@ package assignment;
  * Die.java
  */
 public class Die {
-	public static final int lowNum  = 1;
+	public static final int LOWEST_NUM  = 1;
 	public int numOfSides;
 	
 	public Die(int numOfSides) {
@@ -17,7 +17,7 @@ public class Die {
 	
 	public int roll() {
 		// generates a random int b/w lowNum - numOfSides
-	    int range = numOfSides - lowNum + 1;
-	    return (int) (Math.random() * range) + lowNum;
+	    int range = numOfSides - LOWEST_NUM + 1;
+	    return (int) (Math.random() * range) + LOWEST_NUM;
 	}
 }

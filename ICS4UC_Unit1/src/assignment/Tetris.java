@@ -48,15 +48,21 @@ public class Tetris extends Application {
 		int X = ((int) event.getX() / TetrisBlock.SIZE) * TetrisBlock.SIZE;
 		int Y = ((int) event.getY() / TetrisBlock.SIZE) * TetrisBlock.SIZE;
 
-		//TODO: set the location to X and Y and draw the block. 
+		//set the location to X and Y and draw the block
+		block.setLocation(X, Y);
+		block.draw();
 
-		//TODO: get a new block and display its description in the Text object
-		
+		//get a new block and display its description in the Text object
+		block = getBlock();
+		upcoming.setText(block.toString());
 	}
 
 	private TetrisBlock getBlock() {
-		// TODO: Implement method to create a block at random and add to the scene graph
-		return null;
+		//Implement method to create a block at random and add to the scene graph
+		TetrisBlock block = new SquareBlock();
+		root.getChildren().add(block);
+		
+		return block;
 	}
 
 	public static void main(String[] args) {

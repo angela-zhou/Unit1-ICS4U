@@ -36,9 +36,13 @@ public class HLPlayer {
 	// Show Points
 	public String showPoints() {
 		// if call is low and user called correctly
-		if (call == LOW && rollSum >= Die.lowNum * 2 && rollSum <= numOfSides) {
+		// LOWEST_NUM * 2 is the lowest possible value
+		// numOfSides is the highest "low" value
+		if (call == LOW && rollSum >= Die.LOWEST_NUM * 2 && rollSum <= numOfSides) {
 			points += riskPoints * 2;
 		// if call is high and user called correctly
+		// numOfSides + 2 is the lowest "high" value
+		// numOfSides * 2 is the greatest possible value
 		} else if (call == HIGH && rollSum >= numOfSides + 2 && rollSum <= numOfSides * 2) {
 			points += riskPoints * 2;
 		// otherwise user loses risk points

@@ -1,6 +1,5 @@
 package assignment;
 
-
 /**
  * 
  * @author Angela Zhou
@@ -8,48 +7,37 @@ package assignment;
  * Course: ICS4U
  * Teacher: Mrs. Spindler
  * TetrisBlock.java
- *
- * TO DO:
- * Constructor: 
- * set orientation to zero 
- * set the color to a random color
- * 
- * setLocation method:
- *  will set x and y to given values
- *  
- *  abstract methods:
- *  draw
- *  toString
  */
-
 import javafx.scene.Parent;
+import javafx.scene.paint.Color;
 
 public abstract class TetrisBlock extends Parent {
+	public final static int SIZE = 25;
 	protected int x;
 	protected int y;
-	protected int orientation;
-	protected String colour;
-	public final int size = 25;
+	protected Color colour;
 	
 	public TetrisBlock() {
-		setOrientation(0);
-		
-	}
-	
-	public int getOrientation() {
-		return orientation;
+		setLocation(0, 0);
+		setColour();
 	}
 
-	public void setOrientation(int orientation) {
-		this.orientation = orientation;
+	public void setLocation(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 	
-	public String getColour() {
-		return colour;
+	public void setColour() {
+		this.colour = Color.rgb(random(), random(), random());
 	}
 	
-	public void setColour(String colour) {
-		
-		this.colour = colour;
+	public int random() {
+		// generates a random int to pick colour
+	    int range = 255 - 1 + 1;
+	    return (int) (Math.random() * range) + 1;
 	}
+	
+	public abstract void draw();
+	
+	public abstract String toString();
 }
