@@ -9,7 +9,7 @@ import javafx.scene.shape.Rectangle;
  * Teacher: Mrs. Spindler
  * SquareBlock.java
  */
-public class LineBlock extends TetrisBlock{
+public class LineBlock extends TetrisBlock implements Orientable {
 	
 	public LineBlock() {
 		super();
@@ -27,5 +27,11 @@ public class LineBlock extends TetrisBlock{
 	@Override
 	public String toString() {
 		return "Line Block";
+	}
+
+	@Override
+	public void setOrientation(int orientation) {
+		// TODO Auto-generated method stub
+		
 	}
 }
