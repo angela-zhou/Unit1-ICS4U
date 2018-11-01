@@ -7,22 +7,16 @@ package assignment;
  * Teacher: Mrs. Spindler
  * OffsetBlock.java
  */
-public class OffsetBlock extends TetrisBlock {
+public abstract class OffsetBlock extends TetrisBlock {
 	private int offset;
 
-	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-		
+	public OffsetBlock(int shift) {
+		super();
+		setOffset(shift);
 	}
 
-	@Override
-	public String toString() {
-		return "Offset Block";
-	}
-
-	public void setOffset(int offset) {
-		this.offset = offset;
+	public void setOffset(int shift) {
+		offset = shift;
 	}
 
 }

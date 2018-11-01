@@ -9,6 +9,6 @@ package assignment;
  */
 public interface Orientable {
 	
-	public void setOrientation(int orientation);
+	public void setOrientation(int angle);
 
 }

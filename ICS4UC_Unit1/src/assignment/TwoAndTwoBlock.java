@@ -1,5 +1,7 @@
 package assignment;
 
+import javafx.scene.shape.Rectangle;
+
 /**
  * @author Angela Zhou
  * Start Date: Oct 24th, 2018
@@ -7,23 +9,47 @@ package assignment;
  * Teacher: Mrs. Spindler
  * TwoAndTwoBlock.java
  */
-public class TwoAndTwoBlock extends TetrisBlock implements Orientable {
+public class TwoAndTwoBlock extends OffsetBlock implements Orientable {
+	private int offset;
+	private int orientation;
 
-	@Override
-	public void setOrientation(int orientation) {
-		// TODO Auto-generated method stub
-		
+	public TwoAndTwoBlock(int shift, int angle) {
+		super(shift);
+		setOrientation(angle);
 	}
-
+	
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
-		
+		Rectangle rectangle1 = new Rectangle();
+		Rectangle rectangle2 = new Rectangle();
+		if (offset == -1) {
+			rectangle1 = Rectangle(SIZE, 2 * SIZE, colour);
+			setLayoutX(x);
+			setLayoutY(y);
+			rectangle2 = Rectangle(SIZE, 2 * SIZE, colour);
+			setLayoutX(SIZE);
+			setLayoutY(SIZE);
+		} else {
+			rectangle1 = Rectangle(SIZE, 2 * SIZE, colour);
+			setLayoutX(x);
+			setLayoutY(y);
+			rectangle2 = Rectangle(SIZE, 2 * SIZE, colour);
+			setLayoutX(x);
+			setLayoutY(SIZE);
+		}
+		getChildren().addAll(rectangle1, rectangle2);
+
 	}
 
 	@Override
 	public String toString() {
 		return "Two and Two Block";
+	}
+
+	@Override
+	public void setOrientation(int angle) {
+		orientation = angle;
+		setRotate(orientation);
 	}
 
 }

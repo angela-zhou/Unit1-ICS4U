@@ -7,23 +7,30 @@ package assignment;
  * Teacher: Mrs. Spindler
  * ThreeAndOneBlock.java
  */
-public class ThreeAndOneBlock extends TetrisBlock implements Orientable {
-
-	@Override
-	public void setOrientation(int orientation) {
-		// TODO Auto-generated method stub
-		
+public class ThreeAndOneBlock extends OffsetBlock implements Orientable {
+	private int offset;
+	private int orientation;
+	
+	public ThreeAndOneBlock(int shift, int angle) {
+		super(shift);
+		setOrientation(angle);
 	}
-
+	
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public String toString() {
 		return "Three and One Block";
+	}
+	
+	@Override
+	public void setOrientation(int angle) {
+		orientation = angle;
+		setRotate(orientation);
 	}
 
 }

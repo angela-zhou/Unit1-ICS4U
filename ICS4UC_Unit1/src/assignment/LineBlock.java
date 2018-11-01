@@ -10,9 +10,11 @@ import javafx.scene.shape.Rectangle;
  * SquareBlock.java
  */
 public class LineBlock extends TetrisBlock implements Orientable {
+	private int orientation;
 	
-	public LineBlock() {
+	public LineBlock(int angle) {
 		super();
+		setOrientation(angle);
 	}
 
 	@Override
@@ -30,8 +32,8 @@ public class LineBlock extends TetrisBlock implements Orientable {
 	}
 
 	@Override
-	public void setOrientation(int orientation) {
-		// TODO Auto-generated method stub
-		
+	public void setOrientation(int angle) {
+		orientation = angle;
+		setRotate(orientation);
 	}
 }

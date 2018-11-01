@@ -59,7 +59,7 @@ public class Tetris extends Application {
 
 	private TetrisBlock getBlock() {
 		//Creating a block at random and adding it to the scene graph
-		TetrisBlock block = (Math.random() < 0.5) ? new LineBlock() : new SquareBlock();
+		TetrisBlock block = (Math.random() < 0.5) ? new LineBlock((Math.random() < 0.5) ? 0 : 90) : new SquareBlock();
 		//TetrisBlock block = new LineBlock();
 		root.getChildren().add(block);
 		
