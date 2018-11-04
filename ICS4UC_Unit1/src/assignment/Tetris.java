@@ -1,5 +1,7 @@
 package assignment;
 
+import java.io.Console;
+
 /**
  * @author Angela Zhou
  * Start Date: Oct 24th, 2018
@@ -66,7 +68,7 @@ public class Tetris extends Application {
 	private TetrisBlock getBlock() {
 		TetrisBlock block;
 		
-		// creating a block at random 
+		// creating a block at random, the four BlockTypes have equal probability of showing up 
 		switch (randomBlock()) {
 		case SQUARE_BLOCK:
 			block = new SquareBlock();
@@ -77,10 +79,8 @@ public class Tetris extends Application {
 		case TWO_AND_TWO_BLOCK:
 			block = new TwoAndTwoBlock(randomShift(BlockType.TWO_AND_TWO_BLOCK), randomAngle(BlockType.TWO_AND_TWO_BLOCK));
 			break;
-		case THREE_AND_ONE_BLOCK:
+		default: // THREE_AND_ONE_BLOCK
 			block = new ThreeAndOneBlock(randomShift(BlockType.THREE_AND_ONE_BLOCK), randomAngle(BlockType.THREE_AND_ONE_BLOCK));
-		default:
-			block = new SquareBlock();
 			break;
 		}
 		
@@ -92,13 +92,7 @@ public class Tetris extends Application {
 	
 	private BlockType randomBlock() {
 		// method to assist getBlock() with creating random TetrisBlocks
-		final int min = 0;
-		final int max = btArray.length - 1;
-		
-		// randomly generate int b/w 1 - 4
-		int range = max - min + 1;
-	    int index = (int) (Math.random() * range) + min;
-	    
+	    int index = (int) (Math.random() * btArray.length);
 	    return btArray[index];
 	}
 	
@@ -108,15 +102,16 @@ public class Tetris extends Application {
 		// randomly generate angle for specific case
 		switch (bt) {
 		case LINE_BLOCK:
-			angle = (Math.random() < 0.5) ? 0 : 90;
+			angle = (Math.random() < 0.5) ? 0 : 90; // randomly generate 0 or 90
 			break;
 		case TWO_AND_TWO_BLOCK:
-			angle = (Math.random() < 0.5) ? 0 : 90;
+			angle = (Math.random() < 0.5) ? 0 : 90; // randomly generate 0 or 90
 			break;
 		case THREE_AND_ONE_BLOCK:
-			angle = // randomly generate 0, 90, 180, or 270
+			angle = (int) (Math.random() * 4) * 90; // randomly generate 0, 90, 180, or 270
+			break;
 		default:
-			angle = 0;
+			angle = 0; // all blocks that implement orientable can have angle of 0
 			break;
 		}
 		return angle;
@@ -128,13 +123,13 @@ public class Tetris extends Application {
 		// randomly generate offset for specific case
 		switch(bt) {
 		case TWO_AND_TWO_BLOCK:
-			shift = (Math.random() < 0.5) ? -1 : 1;
+			shift = (Math.random() < 0.5) ? -1 : 1; // randomly generate -1 or 1
 			break;
 		case THREE_AND_ONE_BLOCK:
-			shift = //randomly generate 1, 2, or 3
+			shift = (int) (Math.random() * 3) + 1; // randomly generate 1, 2, or 3
 			break;
 		default:
-			shift = 1;
+			shift = 1; // all blocks that extend OffsetBlock can have a shift of 1
 			break;
 		}
 		return shift;

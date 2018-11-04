@@ -31,11 +31,8 @@ public class LineBlock extends TetrisBlock implements Orientable {
 		case 0:
 			line = new Rectangle(shortLen, longLen, colour);
 			break;
-		case 90:
+		default: // case 90
 			line = new Rectangle(longLen, shortLen, colour);
-			break;
-		default:
-			line = new Rectangle(shortLen, longLen, colour);
 			break;
 		}
 		
