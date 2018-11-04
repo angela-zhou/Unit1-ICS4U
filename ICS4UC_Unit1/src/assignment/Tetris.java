@@ -6,6 +6,19 @@ package assignment;
  * Course: ICS4U
  * Teacher: Mrs. Spindler
  * Tetris.java
+ * 
+ * TODO
+ * Ask Mrs Spindler about UML diagram - does it match your description or the classes we have made? 
+ * (Be sure to mention private data field orientation existence in all classes that extend Orientable)
+ * 
+ * Make strokes on blocks - you have already set up the code to make this transition easy
+ * (You'll get rid of shortLen, longLen, and OffsetLen data fields)
+ * 
+ * Take in consideration the Probability of each block showing up
+ * 7 Tetris blocks, not four, since they are sorted by Offset
+ * May have to get rid of randomShift() method :( 
+ * (but suck it up, you've already demonstrated your understanding of random generation through randomAngle())
+ * 
  */
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -109,7 +122,7 @@ public class Tetris extends Application {
 			angle = (int) (Math.random() * 4) * 90; // randomly generate 0, 90, 180, or 270
 			break;
 		default:
-			angle = 0; // all blocks that implement orientable can have angle of 0
+			angle = 0; // all blocks that implement Orientable can have angle of 0
 			break;
 		}
 		return angle;
