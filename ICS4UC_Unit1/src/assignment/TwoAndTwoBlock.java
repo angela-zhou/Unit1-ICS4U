@@ -74,7 +74,6 @@ public class TwoAndTwoBlock extends OffsetBlock implements Orientable {
 		setLayoutX(x);
 		setLayoutY(y);
 		getChildren().addAll(rect1, rect2);
-
 	}
 
 	@Override

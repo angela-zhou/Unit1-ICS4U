@@ -23,7 +23,7 @@ public class Tetris extends Application {
 	    SQUARE_BLOCK, LINE_BLOCK, TWO_AND_TWO_BLOCK, THREE_AND_ONE_BLOCK; 
 	} 
 	
-	BlockType[] btArray = {BlockType.SQUARE_BLOCK, BlockType.LINE_BLOCK, BlockType.TWO_AND_TWO_BLOCK};
+	BlockType[] btArray = {BlockType.SQUARE_BLOCK, BlockType.LINE_BLOCK, BlockType.TWO_AND_TWO_BLOCK, BlockType.THREE_AND_ONE_BLOCK};
 
 	Group root;
 	TetrisBlock block;
@@ -58,16 +58,15 @@ public class Tetris extends Application {
 		block.setLocation(X, Y);
 		block.draw();
 
-		//get a new block and display its description in the Text object
+		// get a new block and display its description in the Text object
 		block = getBlock();
 		upcoming.setText(block.toString());
 	}
 
 	private TetrisBlock getBlock() {
-		//Creating a block at random and adding it to the scene graph
-		
 		TetrisBlock block;
 		
+		// creating a block at random 
 		switch (randomBlock()) {
 		case SQUARE_BLOCK:
 			block = new SquareBlock();
@@ -76,15 +75,16 @@ public class Tetris extends Application {
 			block = new LineBlock(randomAngle(BlockType.LINE_BLOCK));
 			break;
 		case TWO_AND_TWO_BLOCK:
-			block = new TwoAndTwoBlock((Math.random() < 0.5) ? -1 : 1, randomAngle(BlockType.TWO_AND_TWO_BLOCK));
+			block = new TwoAndTwoBlock(randomShift(BlockType.TWO_AND_TWO_BLOCK), randomAngle(BlockType.TWO_AND_TWO_BLOCK));
 			break;
-//		case 4:
-//			block = new ThreeAndOneBlock(int offset, int angle); // offset 1-3, angle 0, 90, 180, 270
+		case THREE_AND_ONE_BLOCK:
+			block = new ThreeAndOneBlock(randomShift(BlockType.THREE_AND_ONE_BLOCK), randomAngle(BlockType.THREE_AND_ONE_BLOCK));
 		default:
 			block = new SquareBlock();
 			break;
 		}
-
+		
+		// adding block to the scene graph
 		root.getChildren().add(block);
 		
 		return block;
@@ -95,6 +95,7 @@ public class Tetris extends Application {
 		final int min = 0;
 		final int max = btArray.length - 1;
 		
+		// randomly generate int b/w 1 - 4
 		int range = max - min + 1;
 	    int index = (int) (Math.random() * range) + min;
 	    
@@ -102,9 +103,9 @@ public class Tetris extends Application {
 	}
 	
 	private int randomAngle(BlockType bt) {
-		
 		int angle;
 		
+		// randomly generate angle for specific case
 		switch (bt) {
 		case LINE_BLOCK:
 			angle = (Math.random() < 0.5) ? 0 : 90;
@@ -112,11 +113,31 @@ public class Tetris extends Application {
 		case TWO_AND_TWO_BLOCK:
 			angle = (Math.random() < 0.5) ? 0 : 90;
 			break;
+		case THREE_AND_ONE_BLOCK:
+			angle = // randomly generate 0, 90, 180, or 270
 		default:
 			angle = 0;
 			break;
 		}
 		return angle;
+	}
+	
+	private int randomShift(BlockType bt) {
+		int shift;
+		
+		// randomly generate offset for specific case
+		switch(bt) {
+		case TWO_AND_TWO_BLOCK:
+			shift = (Math.random() < 0.5) ? -1 : 1;
+			break;
+		case THREE_AND_ONE_BLOCK:
+			shift = //randomly generate 1, 2, or 3
+			break;
+		default:
+			shift = 1;
+			break;
+		}
+		return shift;
 	}
 
 	public static void main(String[] args) {
