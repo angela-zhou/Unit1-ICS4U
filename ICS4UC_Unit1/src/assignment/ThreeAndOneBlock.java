@@ -8,7 +8,7 @@ package assignment;
  * ThreeAndOneBlock.java
  */
 public class ThreeAndOneBlock extends OffsetBlock implements Orientable {
-	private int offset;
+	
 	private int orientation;
 	
 	public ThreeAndOneBlock(int shift, int angle) {
@@ -30,7 +30,6 @@ public class ThreeAndOneBlock extends OffsetBlock implements Orientable {
 	@Override
 	public void setOrientation(int angle) {
 		orientation = angle;
-		setRotate(orientation);
 	}
 
 }

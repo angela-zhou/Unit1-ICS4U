@@ -17,7 +17,10 @@ public class SquareBlock extends TetrisBlock {
 
 	@Override
 	public void draw() {
+		// initialize and draw object
 		Rectangle square = new Rectangle(2 * SIZE, 2 * SIZE, colour);
+		
+		// add to root
 		setLayoutX(x);
 		setLayoutY(y);
 		getChildren().add(square);

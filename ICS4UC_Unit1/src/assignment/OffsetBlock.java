@@ -8,15 +8,19 @@ package assignment;
  * OffsetBlock.java
  */
 public abstract class OffsetBlock extends TetrisBlock {
-	private int offset;
+	protected int offset;
 
 	public OffsetBlock(int shift) {
 		super();
 		setOffset(shift);
 	}
+	
+	public int getOffset() {
+		return offset;
+	}
 
 	public void setOffset(int shift) {
-		offset = shift;
+		this.offset = shift;
 	}
 
 }

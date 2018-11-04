@@ -10,6 +10,10 @@ import javafx.scene.shape.Rectangle;
  * SquareBlock.java
  */
 public class LineBlock extends TetrisBlock implements Orientable {
+	// variables for height and width
+	final private int shortLen = SIZE;
+	final private int longLen  = SIZE * 4;
+	
 	private int orientation;
 	
 	public LineBlock(int angle) {
@@ -19,11 +23,26 @@ public class LineBlock extends TetrisBlock implements Orientable {
 
 	@Override
 	public void draw() {
-		Rectangle line = new Rectangle(SIZE, 4 * SIZE, colour);
+		// initialize object
+		Rectangle line;
+		
+		// draw object depending on orientation
+		switch (orientation) {
+		case 0:
+			line = new Rectangle(shortLen, longLen, colour);
+			break;
+		case 90:
+			line = new Rectangle(longLen, shortLen, colour);
+			break;
+		default:
+			line = new Rectangle(shortLen, longLen, colour);
+			break;
+		}
+		
+		// add to root
 		setLayoutX(x);
 		setLayoutY(y);
 		getChildren().add(line);
-		
 	}
 
 	@Override
@@ -34,6 +53,5 @@ public class LineBlock extends TetrisBlock implements Orientable {
 	@Override
 	public void setOrientation(int angle) {
 		orientation = angle;
-		setRotate(orientation);
 	}
 }

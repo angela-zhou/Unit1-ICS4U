@@ -59,11 +59,38 @@ public class Tetris extends Application {
 
 	private TetrisBlock getBlock() {
 		//Creating a block at random and adding it to the scene graph
-		TetrisBlock block = (Math.random() < 0.5) ? new LineBlock((Math.random() < 0.5) ? 0 : 90) : new SquareBlock();
-		//TetrisBlock block = new LineBlock();
+		
+		TetrisBlock block;
+		
+		switch (randomBlock()) {
+		case 1:
+			block = new SquareBlock();
+			break;
+		case 2:
+			block = new LineBlock(randomAngle());
+			break;
+		case 3:
+			block = new TwoAndTwoBlock((Math.random() < 0.5) ? -1 : 1, randomAngle());
+			break;
+		default:
+			block = new SquareBlock();
+			break;
+		}
+
 		root.getChildren().add(block);
 		
 		return block;
+	}
+	
+	private int randomBlock() {
+		// method to assist getBlock() with creating random TetrisBlocks
+		// randomly generates a number between 1 and 4 (the num of types of blocks)
+		int range = 3 - 1 + 1;
+	    return (int) (Math.random() * range) + 1;
+	}
+	
+	private int randomAngle() {
+		return (Math.random() < 0.5) ? 0 : 90;
 	}
 
 	public static void main(String[] args) {

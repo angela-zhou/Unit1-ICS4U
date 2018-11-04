@@ -10,34 +10,70 @@ import javafx.scene.shape.Rectangle;
  * TwoAndTwoBlock.java
  */
 public class TwoAndTwoBlock extends OffsetBlock implements Orientable {
-	private int offset;
+	// variables for height and width
+	final private int shortLen = SIZE;
+	final private int longLen  = SIZE * 2;
+
 	private int orientation;
 
 	public TwoAndTwoBlock(int shift, int angle) {
 		super(shift);
 		setOrientation(angle);
 	}
-	
+
 	@Override
 	public void draw() {
-		Rectangle rectangle1 = new Rectangle();
-		Rectangle rectangle2 = new Rectangle();
-		if (offset == -1) {
-			rectangle1 = Rectangle(SIZE, 2 * SIZE, colour);
-			setLayoutX(x);
-			setLayoutY(y);
-			rectangle2 = Rectangle(SIZE, 2 * SIZE, colour);
-			setLayoutX(SIZE);
-			setLayoutY(SIZE);
-		} else {
-			rectangle1 = Rectangle(SIZE, 2 * SIZE, colour);
-			setLayoutX(x);
-			setLayoutY(y);
-			rectangle2 = Rectangle(SIZE, 2 * SIZE, colour);
-			setLayoutX(x);
-			setLayoutY(SIZE);
+		// initialize object 
+		Rectangle rect1;
+		Rectangle rect2;
+
+		// draw object depending on orientation and offset
+		if (offset == -1 && orientation == 0) {
+			// rectangle 1
+			rect1 = new Rectangle(0, 0, longLen, shortLen);
+			rect1.setFill(colour);
+			// rectangle 2
+			rect2 = new Rectangle(SIZE, SIZE, longLen, shortLen);
+			rect2.setFill(colour);
+
+		} else if (offset == -1 && orientation == 90) {
+			// rectangle 1
+			rect1 = new Rectangle(SIZE, 0, shortLen, longLen);
+			rect1.setFill(colour);
+			// rectangle 2
+			rect2 = new Rectangle(0, SIZE, shortLen, longLen);
+			rect2.setFill(colour);
+
+		} else if (offset == 1 && orientation == 0) {
+			// rectangle 1
+			rect1 = new Rectangle(SIZE, 0, longLen, shortLen);
+			rect1.setFill(colour);
+			// rectangle 2
+			rect2 = new Rectangle(0, SIZE, longLen, shortLen);
+			rect2.setFill(colour);
+
+		} else if (offset == 1 && orientation == 90) {
+			// rectangle 1
+			rect1 = new Rectangle(0, 0, shortLen, longLen);
+			rect1.setFill(colour);
+			// rectangle 2
+			rect2 = new Rectangle(SIZE, SIZE, shortLen, longLen);
+			rect2.setFill(colour);
+
+		} else { // (offset == 1 && orientation == 0)
+			// rectangle 1
+			rect1 = new Rectangle(SIZE, 0, longLen, shortLen);
+			rect1.setFill(colour);
+			// rectangle 2
+			rect2 = new Rectangle(0, SIZE, longLen, shortLen);
+			rect2.setFill(colour);
+			
 		}
-		getChildren().addAll(rectangle1, rectangle2);
+
+		// add to root
+		setLayoutX(x);
+		setLayoutY(y);
+		getChildren().addAll(rect1, rect2);
 
 	}
 
@@ -49,7 +85,6 @@ public class TwoAndTwoBlock extends OffsetBlock implements Orientable {
 	@Override
 	public void setOrientation(int angle) {
 		orientation = angle;
-		setRotate(orientation);
 	}
 
 }
