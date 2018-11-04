@@ -86,5 +86,5 @@ public class TwoAndTwoBlock extends OffsetBlock implements Orientable {
 	public void setOrientation(int angle) {
 		orientation = angle;
 	}
-
+	
 }

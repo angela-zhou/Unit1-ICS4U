@@ -18,7 +18,7 @@ public class ThreeAndOneBlock extends OffsetBlock implements Orientable {
 	
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -31,5 +31,4 @@ public class ThreeAndOneBlock extends OffsetBlock implements Orientable {
 	public void setOrientation(int angle) {
 		orientation = angle;
 	}
-
 }

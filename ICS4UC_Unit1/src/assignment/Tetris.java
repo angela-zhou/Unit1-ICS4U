@@ -18,6 +18,12 @@ public class Tetris extends Application {
 
 	public static final int SCREEN_WIDTH = 800;
 	public static final int SCREEN_HEIGHT = 600;
+	 
+	enum BlockType { 
+	    SQUARE_BLOCK, LINE_BLOCK, TWO_AND_TWO_BLOCK, THREE_AND_ONE_BLOCK; 
+	} 
+	
+	BlockType[] btArray = {BlockType.SQUARE_BLOCK, BlockType.LINE_BLOCK, BlockType.TWO_AND_TWO_BLOCK};
 
 	Group root;
 	TetrisBlock block;
@@ -63,15 +69,17 @@ public class Tetris extends Application {
 		TetrisBlock block;
 		
 		switch (randomBlock()) {
-		case 1:
+		case SQUARE_BLOCK:
 			block = new SquareBlock();
 			break;
-		case 2:
-			block = new LineBlock(randomAngle());
+		case LINE_BLOCK:
+			block = new LineBlock(randomAngle(BlockType.LINE_BLOCK));
 			break;
-		case 3:
-			block = new TwoAndTwoBlock((Math.random() < 0.5) ? -1 : 1, randomAngle());
+		case TWO_AND_TWO_BLOCK:
+			block = new TwoAndTwoBlock((Math.random() < 0.5) ? -1 : 1, randomAngle(BlockType.TWO_AND_TWO_BLOCK));
 			break;
+//		case 4:
+//			block = new ThreeAndOneBlock(int offset, int angle); // offset 1-3, angle 0, 90, 180, 270
 		default:
 			block = new SquareBlock();
 			break;
@@ -82,15 +90,33 @@ public class Tetris extends Application {
 		return block;
 	}
 	
-	private int randomBlock() {
+	private BlockType randomBlock() {
 		// method to assist getBlock() with creating random TetrisBlocks
-		// randomly generates a number between 1 and 4 (the num of types of blocks)
-		int range = 3 - 1 + 1;
-	    return (int) (Math.random() * range) + 1;
+		final int min = 0;
+		final int max = btArray.length - 1;
+		
+		int range = max - min + 1;
+	    int index = (int) (Math.random() * range) + min;
+	    
+	    return btArray[index];
 	}
 	
-	private int randomAngle() {
-		return (Math.random() < 0.5) ? 0 : 90;
+	private int randomAngle(BlockType bt) {
+		
+		int angle;
+		
+		switch (bt) {
+		case LINE_BLOCK:
+			angle = (Math.random() < 0.5) ? 0 : 90;
+			break;
+		case TWO_AND_TWO_BLOCK:
+			angle = (Math.random() < 0.5) ? 0 : 90;
+			break;
+		default:
+			angle = 0;
+			break;
+		}
+		return angle;
 	}
 
 	public static void main(String[] args) {
