@@ -1,7 +1,5 @@
 package assignment;
 
-import java.io.Console;
-
 /**
  * @author Angela Zhou
  * Start Date: Oct 24th, 2018
