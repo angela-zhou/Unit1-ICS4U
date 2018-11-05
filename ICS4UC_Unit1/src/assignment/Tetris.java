@@ -5,16 +5,7 @@ package assignment;
  * Start Date: Oct 24th, 2018
  * Course: ICS4U
  * Teacher: Mrs. Spindler
- * Tetris.java
- * 
- * TODO
- * Ask Mrs Spindler about UML diagram - does it match your description or the classes we have made? 
- * (Be sure to mention private data field orientation existence in all classes that extend Orientable)
- * 
- * Ask Mrs Spindler if I can make setting colour and stroke in one line (use loops?)
- * 
- * Ask Mrs Spindler about alignment by using SIZE * 0 and SIZE * 1 even though I probably shouldn't
- * 
+ * Tetris.java 
  */
 import javafx.application.Application;
 import javafx.scene.Group;

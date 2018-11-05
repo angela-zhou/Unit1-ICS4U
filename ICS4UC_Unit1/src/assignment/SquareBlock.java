@@ -21,35 +21,37 @@ public class SquareBlock extends TetrisBlock {
 		/**
 		 * Initialize squares
 		 */
-		Rectangle sq1 = new Rectangle(   0,    0, SIZE, SIZE);
-		Rectangle sq2 = new Rectangle(   0, SIZE, SIZE, SIZE);
-		Rectangle sq3 = new Rectangle(SIZE,    0, SIZE, SIZE);
-		Rectangle sq4 = new Rectangle(SIZE, SIZE, SIZE, SIZE);
+		// Initialize array
+		Rectangle[] sq = new Rectangle[4];
+		// set coordinates and side lengths
+		// Each square has its own x and y
+		sq[0] = new Rectangle(   0,    0, SIZE, SIZE);
+		sq[1] = new Rectangle(   0, SIZE, SIZE, SIZE);
+		sq[2] = new Rectangle(SIZE,    0, SIZE, SIZE);
+		sq[3] = new Rectangle(SIZE, SIZE, SIZE, SIZE);
 		
 		/**
 		 * Draw squares
 		 */
 		// Fill Squares
-		sq1.setFill(colour);
-		sq2.setFill(colour);
-		sq3.setFill(colour);
-		sq4.setFill(colour);
+		for (int i = 0; i < sq.length; i++) {
+			sq[i].setFill(colour);
+		}
 		// Set Stroke
-		sq1.setStroke(Color.BLACK);
-		sq2.setStroke(Color.BLACK);
-		sq3.setStroke(Color.BLACK);
-		sq4.setStroke(Color.BLACK);
+		for (int i = 0; i < sq.length; i++) {
+			sq[i].setStroke(Color.BLACK);
+		}
 		
 		/**
 		 * Add to root
 		 */
 		setLayoutX(x);
 		setLayoutY(y);
-		getChildren().addAll(sq1, sq2, sq3, sq4);
+		getChildren().addAll(sq);
 	}
 
 	@Override
 	public String toString() {
-		return "Square Block";
+		return "O Block";
 	}
 }
