@@ -12,7 +12,6 @@ import javafx.scene.shape.Rectangle;
  */
 public class ThreeAndOneBlock extends OffsetBlock implements Orientable {
 	final private int OFFSET_LEN = SIZE * 2;
-	private int orientation;
 
 	public ThreeAndOneBlock(int shift, int angle) {
 		super(shift);

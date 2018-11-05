@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
  */
 public abstract class TetrisBlock extends Parent {
 	public final static int SIZE = 25;
+	protected int orientation;
 	protected int x;
 	protected int y;
 	protected Color colour;
@@ -27,10 +28,10 @@ public abstract class TetrisBlock extends Parent {
 	}
 	
 	public void setColour() {
-		this.colour = Color.rgb(random(), random(), random());
+		this.colour = Color.rgb(randomColour(), randomColour(), randomColour());
 	}
 	
-	public int random() {
+	public int randomColour() {
 		// generates a random int to pick colour
 	    int range = 255 - 1 + 1;
 	    return (int) (Math.random() * range) + 1;

@@ -11,7 +11,6 @@ import javafx.scene.shape.Rectangle;
  * TwoAndTwoBlock.java
  */
 public class TwoAndTwoBlock extends OffsetBlock implements Orientable {
-	private int orientation;
 
 	public TwoAndTwoBlock(int shift, int angle) {
 		super(shift);
