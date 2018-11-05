@@ -11,13 +11,9 @@ package assignment;
  * Ask Mrs Spindler about UML diagram - does it match your description or the classes we have made? 
  * (Be sure to mention private data field orientation existence in all classes that extend Orientable)
  * 
- * Make strokes on blocks - you have already set up the code to make this transition easy
- * (You'll get rid of shortLen, longLen, and OffsetLen data fields)
+ * Ask Mrs Spindler if I can make setting colour and stroke in one line (use loops?)
  * 
- * Take in consideration the Probability of each block showing up
- * 7 Tetris blocks, not four, since they are sorted by Offset
- * May have to get rid of randomShift() method :( 
- * (but suck it up, you've already demonstrated your understanding of random generation through randomAngle())
+ * Ask Mrs Spindler about alignment by using SIZE * 0 and SIZE * 1 even though I probably shouldn't
  * 
  */
 import javafx.application.Application;
@@ -33,10 +29,17 @@ public class Tetris extends Application {
 	public static final int SCREEN_HEIGHT = 600;
 	 
 	enum BlockType { 
-	    SQUARE_BLOCK, LINE_BLOCK, TWO_AND_TWO_BLOCK, THREE_AND_ONE_BLOCK; 
+	    O_BLOCK, I_BLOCK, Z_BLOCK, S_BLOCK, L_BLOCK, T_BLOCK, J_BLOCK; 
 	} 
 	
-	BlockType[] btArray = {BlockType.SQUARE_BLOCK, BlockType.LINE_BLOCK, BlockType.TWO_AND_TWO_BLOCK, BlockType.THREE_AND_ONE_BLOCK};
+	enum BlockClass {
+		SQUARE_BLOCK, LINE_BLOCK, TWO_AND_TWO_BLOCK, THREE_AND_ONE_BLOCK;
+	}
+	
+	BlockType[] btArray = {BlockType.O_BLOCK, BlockType.I_BLOCK, BlockType.Z_BLOCK, BlockType.S_BLOCK, 
+							BlockType.L_BLOCK, BlockType.T_BLOCK, BlockType.J_BLOCK};
+	
+	BlockClass[] bcArray = {BlockClass.SQUARE_BLOCK, BlockClass.LINE_BLOCK, BlockClass.TWO_AND_TWO_BLOCK, BlockClass.THREE_AND_ONE_BLOCK};
 
 	Group root;
 	TetrisBlock block;
@@ -79,19 +82,31 @@ public class Tetris extends Application {
 	private TetrisBlock getBlock() {
 		TetrisBlock block;
 		
-		// creating a block at random, the four BlockTypes have equal probability of showing up 
+		// creating a block at random, the seven BlockTypes have equal probability of showing up 
 		switch (randomBlock()) {
-		case SQUARE_BLOCK:
+		case O_BLOCK:
 			block = new SquareBlock();
 			break;
-		case LINE_BLOCK:
-			block = new LineBlock(randomAngle(BlockType.LINE_BLOCK));
+		case I_BLOCK:
+			block = new LineBlock(randomAngle(BlockClass.LINE_BLOCK));
 			break;
-		case TWO_AND_TWO_BLOCK:
-			block = new TwoAndTwoBlock(randomShift(BlockType.TWO_AND_TWO_BLOCK), randomAngle(BlockType.TWO_AND_TWO_BLOCK));
+		case Z_BLOCK:
+			block = new TwoAndTwoBlock(-1, randomAngle(BlockClass.TWO_AND_TWO_BLOCK));
 			break;
-		default: // THREE_AND_ONE_BLOCK
-			block = new ThreeAndOneBlock(randomShift(BlockType.THREE_AND_ONE_BLOCK), randomAngle(BlockType.THREE_AND_ONE_BLOCK));
+		case S_BLOCK:
+			block = new TwoAndTwoBlock(1, randomAngle(BlockClass.TWO_AND_TWO_BLOCK));
+			break;
+		case L_BLOCK:
+			block = new ThreeAndOneBlock(1, randomAngle(BlockClass.THREE_AND_ONE_BLOCK));
+			break;
+		case T_BLOCK:
+			block = new ThreeAndOneBlock(2, randomAngle(BlockClass.THREE_AND_ONE_BLOCK));
+			break;
+		case J_BLOCK:
+			block = new ThreeAndOneBlock(3, randomAngle(BlockClass.THREE_AND_ONE_BLOCK));
+			break;
+		default:
+			block = new SquareBlock();
 			break;
 		}
 		
@@ -107,11 +122,11 @@ public class Tetris extends Application {
 	    return btArray[index];
 	}
 	
-	private int randomAngle(BlockType bt) {
+	private int randomAngle(BlockClass bc) {
 		int angle;
 		
 		// randomly generate angle for specific case
-		switch (bt) {
+		switch (bc) {
 		case LINE_BLOCK:
 			angle = (Math.random() < 0.5) ? 0 : 90; // randomly generate 0 or 90
 			break;
@@ -126,24 +141,6 @@ public class Tetris extends Application {
 			break;
 		}
 		return angle;
-	}
-	
-	private int randomShift(BlockType bt) {
-		int shift;
-		
-		// randomly generate offset for specific case
-		switch(bt) {
-		case TWO_AND_TWO_BLOCK:
-			shift = (Math.random() < 0.5) ? -1 : 1; // randomly generate -1 or 1
-			break;
-		case THREE_AND_ONE_BLOCK:
-			shift = (int) (Math.random() * 3) + 1; // randomly generate 1, 2, or 3
-			break;
-		default:
-			shift = 1; // all blocks that extend OffsetBlock can have a shift of 1
-			break;
-		}
-		return shift;
 	}
 
 	public static void main(String[] args) {

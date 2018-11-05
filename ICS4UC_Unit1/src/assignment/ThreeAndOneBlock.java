@@ -1,5 +1,6 @@
 package assignment;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -10,11 +11,7 @@ import javafx.scene.shape.Rectangle;
  * ThreeAndOneBlock.java
  */
 public class ThreeAndOneBlock extends OffsetBlock implements Orientable {
-	// variables for height and width
-	final private int shortLen  = SIZE;
-	final private int longLen   = SIZE * 3;
-	final private int offsetLen = SIZE * 2;
-
+	final private int OFFSET_LEN = SIZE * 2;
 	private int orientation;
 
 	public ThreeAndOneBlock(int shift, int angle) {
@@ -24,99 +21,110 @@ public class ThreeAndOneBlock extends OffsetBlock implements Orientable {
 
 	@Override
 	public void draw() {
-		// initialize object 
-		Rectangle line;
-		Rectangle square;
+		/**
+		 * Initialize squares
+		 */
+		Rectangle sq1;
+		Rectangle sq2;
+		Rectangle sq3;
+		Rectangle sq4;
 
-		// draw line depending on orientation
+		/**
+		 * Draw squares according to orientation (must set x and y of 3 squares first)
+		 */
 		switch (orientation) {
 		case 0:
-			line = new Rectangle(0, 0, longLen, shortLen);
-			line.setFill(colour);
-			// shift square depending on offset
+			sq1 = new Rectangle(SIZE * 0, 0, SIZE, SIZE);
+			sq2 = new Rectangle(SIZE * 1, 0, SIZE, SIZE);
+			sq3 = new Rectangle(SIZE * 2, 0, SIZE, SIZE);
+			// draw last square depending on offset
 			switch (offset) {
 			case 1:
-				square = new Rectangle(0, SIZE, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(0, SIZE, SIZE, SIZE);
 				break;
 			case 2:
-				square = new Rectangle(SIZE, SIZE, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(SIZE, SIZE, SIZE, SIZE);
 				break;
 			default: // case 3
-				square = new Rectangle(offsetLen, SIZE, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(OFFSET_LEN, SIZE, SIZE, SIZE);
 				break;
 			}
 			break;
 		case 90:
-			line = new Rectangle(0, 0, shortLen, longLen);
-			line.setFill(colour);
+			sq1 = new Rectangle(0, SIZE * 0, SIZE, SIZE);
+			sq2 = new Rectangle(0, SIZE * 1, SIZE, SIZE);
+			sq3 = new Rectangle(0, SIZE * 2, SIZE, SIZE);
 			// shift square depending on offset
 			switch (offset) {
 			case 1:
-				square = new Rectangle(SIZE, offsetLen, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(SIZE, OFFSET_LEN, SIZE, SIZE);
 				break;
 			case 2:
-				square = new Rectangle(SIZE, SIZE, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(SIZE, SIZE, SIZE, SIZE);
 				break;
 			default: // case 3
-				square = new Rectangle(SIZE, 0, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(SIZE, 0, SIZE, SIZE);
 				break;
 			}
 			break;
 		case 180:
-			line = new Rectangle(0, SIZE, longLen, shortLen);
-			line.setFill(colour);
+			sq1 = new Rectangle(SIZE * 0, SIZE, SIZE, SIZE);
+			sq2 = new Rectangle(SIZE * 1, SIZE, SIZE, SIZE);
+			sq3 = new Rectangle(SIZE * 2, SIZE, SIZE, SIZE);
 			// shift square depending on offset
 			switch (offset) {
 			case 1:
-				square = new Rectangle(offsetLen, 0, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(OFFSET_LEN, 0, SIZE, SIZE);
 				break;
 			case 2:
-				square = new Rectangle(SIZE, 0, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(SIZE, 0, SIZE, SIZE);
 				break;
 			default: // case 3
-				square = new Rectangle(0, 0, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(0, 0, SIZE, SIZE);
 				break;
 			}
 			break;
 		case 270:
-			line = new Rectangle(SIZE, 0, shortLen, longLen);
-			line.setFill(colour);
+			sq1 = new Rectangle(SIZE, SIZE * 0, SIZE, SIZE);
+			sq2 = new Rectangle(SIZE, SIZE * 1, SIZE, SIZE);
+			sq3 = new Rectangle(SIZE, SIZE * 2, SIZE, SIZE);
 			// shift square depending on offset
 			switch (offset) {
 			case 1:
-				square = new Rectangle(0, 0, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(0, 0, SIZE, SIZE);
 				break;
 			case 2:
-				square = new Rectangle(0, SIZE, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(0, SIZE, SIZE, SIZE);
 				break;
 			default: // case 3
-				square = new Rectangle(0, offsetLen, shortLen, shortLen);
-				square.setFill(colour);
+				sq4 = new Rectangle(0, OFFSET_LEN, SIZE, SIZE);
 				break;
 			}
 			break;
 		default: // if offset == 1 && orientation == 0
-			line   = new Rectangle(0, 0, longLen, shortLen);
-			line.setFill(colour);
-			square = new Rectangle(0, SIZE, shortLen, shortLen);
-			square.setFill(colour);
+			sq1 = new Rectangle(SIZE * 0, 0, SIZE, SIZE);
+			sq2 = new Rectangle(SIZE * 1, 0, SIZE, SIZE);
+			sq3 = new Rectangle(SIZE * 2, 0, SIZE, SIZE);
+			sq4 = new Rectangle(SIZE * 0, SIZE, SIZE, SIZE);
 		}
 
-		// add to root
+		// Fill Squares
+		sq1.setFill(colour);
+		sq2.setFill(colour);
+		sq3.setFill(colour);
+		sq4.setFill(colour);
+		// Set Stroke
+		sq1.setStroke(Color.BLACK);
+		sq2.setStroke(Color.BLACK);
+		sq3.setStroke(Color.BLACK);
+		sq4.setStroke(Color.BLACK);
+
+		/**
+		 * Add to root
+		 */
 		setLayoutX(x);
 		setLayoutY(y);
-		getChildren().addAll(line, square);
+		getChildren().addAll(sq1, sq2, sq3, sq4);
 	}
 
 	@Override

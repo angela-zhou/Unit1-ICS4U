@@ -1,5 +1,6 @@
 package assignment;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -17,13 +18,34 @@ public class SquareBlock extends TetrisBlock {
 
 	@Override
 	public void draw() {
-		// initialize and draw object
-		Rectangle square = new Rectangle(2 * SIZE, 2 * SIZE, colour);
+		/**
+		 * Initialize squares
+		 */
+		Rectangle sq1 = new Rectangle(   0,    0, SIZE, SIZE);
+		Rectangle sq2 = new Rectangle(   0, SIZE, SIZE, SIZE);
+		Rectangle sq3 = new Rectangle(SIZE,    0, SIZE, SIZE);
+		Rectangle sq4 = new Rectangle(SIZE, SIZE, SIZE, SIZE);
 		
-		// add to root
+		/**
+		 * Draw squares
+		 */
+		// Fill Squares
+		sq1.setFill(colour);
+		sq2.setFill(colour);
+		sq3.setFill(colour);
+		sq4.setFill(colour);
+		// Set Stroke
+		sq1.setStroke(Color.BLACK);
+		sq2.setStroke(Color.BLACK);
+		sq3.setStroke(Color.BLACK);
+		sq4.setStroke(Color.BLACK);
+		
+		/**
+		 * Add to root
+		 */
 		setLayoutX(x);
 		setLayoutY(y);
-		getChildren().add(square);
+		getChildren().addAll(sq1, sq2, sq3, sq4);
 	}
 
 	@Override

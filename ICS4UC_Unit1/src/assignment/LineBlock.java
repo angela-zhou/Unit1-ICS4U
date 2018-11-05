@@ -1,5 +1,6 @@
 package assignment;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -10,10 +11,6 @@ import javafx.scene.shape.Rectangle;
  * SquareBlock.java
  */
 public class LineBlock extends TetrisBlock implements Orientable {
-	// variables for height and width
-	final private int shortLen = SIZE;
-	final private int longLen  = SIZE * 4;
-	
 	private int orientation;
 	
 	public LineBlock(int angle) {
@@ -23,23 +20,49 @@ public class LineBlock extends TetrisBlock implements Orientable {
 
 	@Override
 	public void draw() {
-		// initialize object
-		Rectangle line;
+		/**
+		 * Initialize squares
+		 */
+		Rectangle sq1;
+		Rectangle sq2;
+		Rectangle sq3;
+		Rectangle sq4;
 		
-		// draw object depending on orientation
+		/**
+		 * Draw squares according to orientation
+		 */
 		switch (orientation) {
 		case 0:
-			line = new Rectangle(shortLen, longLen, colour);
+			sq1 = new Rectangle(SIZE * 0, 0, SIZE, SIZE);
+			sq2 = new Rectangle(SIZE * 1, 0, SIZE, SIZE);
+			sq3 = new Rectangle(SIZE * 2, 0, SIZE, SIZE);
+			sq4 = new Rectangle(SIZE * 3, 0, SIZE, SIZE);
 			break;
 		default: // case 90
-			line = new Rectangle(longLen, shortLen, colour);
+			sq1 = new Rectangle(0, SIZE * 0, SIZE, SIZE);
+			sq2 = new Rectangle(0, SIZE * 1, SIZE, SIZE);
+			sq3 = new Rectangle(0, SIZE * 2, SIZE, SIZE);
+			sq4 = new Rectangle(0, SIZE * 3, SIZE, SIZE);
 			break;
 		}
 		
-		// add to root
+		// Fill Squares
+		sq1.setFill(colour);
+		sq2.setFill(colour);
+		sq3.setFill(colour);
+		sq4.setFill(colour);
+		// Set Stroke
+		sq1.setStroke(Color.BLACK);
+		sq2.setStroke(Color.BLACK);
+		sq3.setStroke(Color.BLACK);
+		sq4.setStroke(Color.BLACK);
+		
+		/**
+		 * Add to root
+		 */
 		setLayoutX(x);
 		setLayoutY(y);
-		getChildren().add(line);
+		getChildren().addAll(sq1, sq2, sq3, sq4);
 	}
 
 	@Override

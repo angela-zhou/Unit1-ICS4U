@@ -1,5 +1,8 @@
 package assignment;
 
+import javafx.scene.Parent;
+import javafx.scene.paint.Color;
+
 /**
  * @author Angela Zhou
  * Start Date: Oct 24th, 2018
@@ -7,9 +10,6 @@ package assignment;
  * Teacher: Mrs. Spindler
  * TetrisBlock.java
  */
-import javafx.scene.Parent;
-import javafx.scene.paint.Color;
-
 public abstract class TetrisBlock extends Parent {
 	public final static int SIZE = 25;
 	protected int x;

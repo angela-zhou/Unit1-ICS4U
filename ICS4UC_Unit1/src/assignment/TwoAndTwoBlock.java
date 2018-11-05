@@ -1,5 +1,6 @@
 package assignment;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -10,10 +11,6 @@ import javafx.scene.shape.Rectangle;
  * TwoAndTwoBlock.java
  */
 public class TwoAndTwoBlock extends OffsetBlock implements Orientable {
-	// variables for height and width
-	final private int shortLen = SIZE;
-	final private int longLen  = SIZE * 2;
-
 	private int orientation;
 
 	public TwoAndTwoBlock(int shift, int angle) {
@@ -23,64 +20,75 @@ public class TwoAndTwoBlock extends OffsetBlock implements Orientable {
 
 	@Override
 	public void draw() {
-		// initialize object 
-		Rectangle rect1;
-		Rectangle rect2;
+		/**
+		 * Initialize squares
+		 */
+		Rectangle sq1;
+		Rectangle sq2;
+		Rectangle sq3;
+		Rectangle sq4;
 
-		// draw rectangles depending on orientation
+		/**
+		 * Draw squares according to orientation
+		 */
 		switch (orientation) {
 		case 0:
-			rect1 = new Rectangle(longLen, shortLen, colour);
-			rect2 = new Rectangle(longLen, shortLen, colour);
-			// shift rectangles depending on offset
 			switch (offset) {
 			case 1:
-				rect1.setX(SIZE);
-				rect1.setY(0);
-				rect2.setX(0);
-				rect2.setY(SIZE);
+				sq1 = new Rectangle(SIZE * 1,    0, SIZE, SIZE);
+				sq2 = new Rectangle(SIZE * 2,    0, SIZE, SIZE);
+				sq3 = new Rectangle(SIZE * 0, SIZE, SIZE, SIZE);
+				sq4 = new Rectangle(SIZE * 1, SIZE, SIZE, SIZE);
 				break;
 			default: // case -1
-				rect1.setX(0);
-				rect1.setY(0);
-				rect2.setX(SIZE);
-				rect2.setY(SIZE);
+				sq1 = new Rectangle(SIZE * 0,    0, SIZE, SIZE);
+				sq2 = new Rectangle(SIZE * 1,    0, SIZE, SIZE);
+				sq3 = new Rectangle(SIZE * 1, SIZE, SIZE, SIZE);
+				sq4 = new Rectangle(SIZE * 2, SIZE, SIZE, SIZE);
 				break;
 			}
 			break;
 		case 90:
-			rect1 = new Rectangle(shortLen, longLen, colour);
-			rect2 = new Rectangle(shortLen, longLen, colour);
-			// shift rectangles depending on offset
 			switch (offset) {
 			case 1:
-				rect1.setX(0);
-				rect1.setY(0);
-				rect2.setX(SIZE);
-				rect2.setY(SIZE);
+				sq1 = new Rectangle(   0, SIZE * 0, SIZE, SIZE);
+				sq2 = new Rectangle(   0, SIZE * 1, SIZE, SIZE);
+				sq3 = new Rectangle(SIZE, SIZE * 1, SIZE, SIZE);
+				sq4 = new Rectangle(SIZE, SIZE * 2, SIZE, SIZE);
 				break;
 			default: // case -1
-				rect1.setX(SIZE);
-				rect1.setY(0);
-				rect2.setX(0);
-				rect2.setY(SIZE);
+				sq1 = new Rectangle(SIZE, SIZE * 0, SIZE, SIZE);
+				sq2 = new Rectangle(SIZE, SIZE * 1, SIZE, SIZE);
+				sq3 = new Rectangle(   0, SIZE * 1, SIZE, SIZE);
+				sq4 = new Rectangle(   0, SIZE * 2, SIZE, SIZE);
 				break;
 			}
 			break;
 		default: // if offset == 1 && orientation == 0
-			// rectangle 1
-			rect1 = new Rectangle(SIZE, 0, longLen, shortLen);
-			rect1.setFill(colour);
-			// rectangle 2
-			rect2 = new Rectangle(0, SIZE, longLen, shortLen);
-			rect2.setFill(colour);
+			sq1 = new Rectangle(SIZE * 1,    0, SIZE, SIZE);
+			sq2 = new Rectangle(SIZE * 2,    0, SIZE, SIZE);
+			sq3 = new Rectangle(SIZE * 0, SIZE, SIZE, SIZE);
+			sq4 = new Rectangle(SIZE * 1, SIZE, SIZE, SIZE);
 			break;
 		}
 
-		// add to root
+		// Fill Squares
+		sq1.setFill(colour);
+		sq2.setFill(colour);
+		sq3.setFill(colour);
+		sq4.setFill(colour);
+		// Set Stroke
+		sq1.setStroke(Color.BLACK);
+		sq2.setStroke(Color.BLACK);
+		sq3.setStroke(Color.BLACK);
+		sq4.setStroke(Color.BLACK);
+
+		/**
+		 * Add to root
+		 */
 		setLayoutX(x);
 		setLayoutY(y);
-		getChildren().addAll(rect1, rect2);
+		getChildren().addAll(sq1, sq2, sq3, sq4);
 	}
 
 	@Override
