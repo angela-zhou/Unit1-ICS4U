@@ -30,6 +30,8 @@ public class HLPlayer {
 		setNumSides(numOfSides);
 		setNumDice(numOfDice);
 		
+		rollSum = 0;
+		
 		dice = new Die[numDice];
 
 		for (int i = 0; i < dice.length; i++) {
