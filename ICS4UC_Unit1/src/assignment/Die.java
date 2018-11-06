@@ -9,15 +9,15 @@ package assignment;
  */
 public class Die {
 	public static final int LOWEST_NUM  = 1;
-	public int numOfSides;
+	public int numSides;
 	
 	public Die(int numOfSides) {
-		this.numOfSides = numOfSides;
+		numSides = numOfSides;
 	}
 	
 	public int roll() {
 		// generates a random int b/w lowNum - numOfSides
-	    int range = numOfSides - LOWEST_NUM + 1;
+	    int range = numSides - LOWEST_NUM + 1;
 	    return (int) (Math.random() * range) + LOWEST_NUM;
 	}
 }
