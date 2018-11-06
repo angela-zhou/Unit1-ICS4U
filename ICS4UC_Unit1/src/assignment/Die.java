@@ -2,7 +2,7 @@ package assignment;
 
 /**
  * @author Angela Zhou
- * Start Sate: Oct 15th, 2018
+ * Start Date: Oct 15th, 2018
  * Course: ICS4U
  * Teacher: Mrs. Spindler
  * Die.java

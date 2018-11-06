@@ -109,6 +109,7 @@ public class Tetris extends Application {
 	
 	private BlockType randomBlock() {
 		// method to assist getBlock() with creating random TetrisBlocks
+		// returns random int from 0-6
 	    int index = (int) (Math.random() * btArray.length);
 	    return btArray[index];
 	}

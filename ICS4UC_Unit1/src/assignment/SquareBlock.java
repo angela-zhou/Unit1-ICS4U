@@ -22,7 +22,7 @@ public class SquareBlock extends TetrisBlock {
 		 * Initialize squares
 		 */
 		// Initialize array
-		Rectangle[] sq = new Rectangle[4];
+		Rectangle[] sq = new Rectangle[NUM_SQUARES];
 		// set coordinates and side lengths
 		// Each square has its own x and y
 		sq[0] = new Rectangle(   0,    0, SIZE, SIZE);

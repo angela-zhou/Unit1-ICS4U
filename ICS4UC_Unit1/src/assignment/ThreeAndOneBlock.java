@@ -24,7 +24,7 @@ public class ThreeAndOneBlock extends OffsetBlock implements Orientable {
 		 * Initialize squares
 		 */
 		// Initialize array
-		Rectangle[] sq = new Rectangle[4];
+		Rectangle[] sq = new Rectangle[NUM_SQUARES];
 
 		/**
 		 * Draw squares according to orientation (must set x and y of 3 squares first)

@@ -11,7 +11,8 @@ import javafx.scene.paint.Color;
  * TetrisBlock.java
  */
 public abstract class TetrisBlock extends Parent {
-	public final static int SIZE = 25;
+	public final static int SIZE        = 25;
+	public final static int NUM_SQUARES = 4;
 	protected int orientation;
 	protected int x;
 	protected int y;

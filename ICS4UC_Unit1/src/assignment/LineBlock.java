@@ -23,7 +23,7 @@ public class LineBlock extends TetrisBlock implements Orientable {
 		 * Initialize squares
 		 */
 		// Initialize array
-		Rectangle[] sq = new Rectangle[4];
+		Rectangle[] sq = new Rectangle[NUM_SQUARES];
 
 		/**
 		 * Draw squares according to orientation
