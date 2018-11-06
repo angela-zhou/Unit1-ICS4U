@@ -41,11 +41,11 @@ public class HLPlayer {
 	 * Gameplay Methods
 	 */
 	public String showPoints() {
-		if (call == LOW && highOrLow() == "low") { // if call is low and user called correctly
+		if (call == LOW && highOrLow() == "low") {          // if call is low and user called correctly
 			points += riskPoints * 2;
-		} else if (call == HIGH && highOrLow() == "high") { // otherwise user loses risk points
+		} else if (call == HIGH && highOrLow() == "high") { // if call is high and user called correctly
 			points += riskPoints * 2;
-		} else { // otherwise user loses risk points
+		} else {                                            // otherwise user loses risk points
 			points -= riskPoints;
 		}
 		// convert back to string to show the user
@@ -66,15 +66,15 @@ public class HLPlayer {
 			int mid = z / 2;
 			a = mid - 1;
 			b = mid + 1;
-		} else { // if z is odd
+		} else {          // if z is odd
 			double mid = z / 2.0;
 			a = (int) Math.floor(mid);
 			b = (int) Math.ceil(mid);
 		}
 	
-		if (rollSum >= x && rollSum <= a) {
+		if (rollSum >= x && rollSum <= a) {        // low range: x - a
 			result = "low";
-		} else if (rollSum >= b && rollSum <= y) {
+		} else if (rollSum >= b && rollSum <= y) { // high range b - y
 			result = "high";
 		} else {
 			result = "neither high nor low";
@@ -87,10 +87,8 @@ public class HLPlayer {
 	 */
 	public void rollDice() {
 		rollSum = 0;
-		int j = dice.length;
 		for (int i = 0; i < dice.length; i++) {
-			int k = dice[i].roll();
-			rollSum += k;
+			rollSum += dice[i].roll();
 		}
 	}
 

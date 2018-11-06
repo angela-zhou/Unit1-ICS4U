@@ -16,7 +16,7 @@ public class Die {
 	}
 	
 	public int roll() {
-		// generates a random int b/w lowNum - numOfSides
+		// generates a random int between LOWEST_NUM - numOfSides
 	    int range = numSides - LOWEST_NUM + 1;
 	    return (int) (Math.random() * range) + LOWEST_NUM;
 	}
